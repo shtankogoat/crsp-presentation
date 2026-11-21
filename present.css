@@ -632,3 +632,5 @@ body.pt{--W:900px;--H:1560px}
 
 /* сцены вне экрана: бесконечные анимации на паузе */
 .sc.off *,.sc.off *::before,.sc.off *::after{animation-play-state:paused!important}
+.ms.f{display:flex;flex-direction:column-reverse;align-items:center;transform:translateY(calc(-100% + 24px))}.ms.f i{margin:10px auto 0}
+.ms.f{flex-direction:column}.ms.f i{order:3}
