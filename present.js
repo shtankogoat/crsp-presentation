@@ -60,7 +60,9 @@
     const y = scrollY;
     scenes.forEach(s => {
       const r = (y - s.top) / vh;               // 0 … n-1 — сцена стоит; <0 входит; >n-1 уходит
-      if (r < -1.2 || r > s.n + .2) return;
+      const off = r < -1.2 || r > s.n + .2;
+      if (off !== s.off) { s.off = off; s.sc.classList.toggle('off', off); }   // пауза бесконечных анимаций вне экрана
+      if (off) return;
       const ent = cl(-r), ext = cl(r - (s.n - 1));
       s.view.style.setProperty('--z', (-ent * 500 - ext * 500).toFixed(1));
       s.view.style.setProperty('--rx', (ent * 18 - ext * 18).toFixed(2));
@@ -75,7 +77,7 @@
         const x = x0 + (x1 - x0) * t, yy = y0 + (y1 - y0) * t;
         s.world.style.transform = `translate(${W / 2}px,${H / 2}px) scale(${dip.toFixed(4)}) translate(${-x}px,${-yy}px)`;
         s.lit.style.strokeDashoffset = (litLen * (1 - p / (s.cams.length - 1))).toFixed(1);
-        const near = Math.round(p); s.panels.forEach((pn, k) => pn.classList.toggle('on', k === near));
+        const near = Math.round(p); if (near !== s.near) { s.near = near; s.panels.forEach((pn, k) => pn.classList.toggle('on', k === near)); }
       }
     });
   };
@@ -124,7 +126,7 @@
     else if ('fFаА'.includes(k)) document.fullscreenElement ? document.exitFullscreen() : R.requestFullscreen?.();
   });
   addEventListener('resize', () => { layout(); drawLinks(); scrollTo(0, stops[cur]); render(); });
-  addEventListener('scroll', render, { passive: true });
+  let rq = 0; addEventListener('scroll', () => { if (!rq) rq = requestAnimationFrame(() => { rq = 0; render(); }); }, { passive: true });
 
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   layout(); drawLinks(); scrollTo(0, 0); render();

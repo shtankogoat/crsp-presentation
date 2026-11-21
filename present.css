@@ -41,7 +41,7 @@ html::-webkit-scrollbar{display:none}
 
 /* hero */
 .badge{display:inline-block;font:600 22px var(--h);letter-spacing:.3em;padding:12px 26px 12px 34px;border:1px solid var(--line);border-radius:999px;background:rgba(47,107,255,.14);margin-bottom:40px}
-h1{font:600 150px/1.12 var(--h);text-transform:uppercase}
+h1{font:600 150px/1.2 var(--h);text-transform:uppercase}
 h1 span{display:block}
 .lead{font-size:32px;color:#c4cdea;margin-top:36px}
 
@@ -173,7 +173,7 @@ h1 span{display:block}
 .union i{font-style:normal;font:300 60px var(--h);color:var(--cyan)}
 
 /* оффер */
-.big{font:600 96px/1.12 var(--h);text-transform:uppercase;max-width:1350px}
+.big{font:600 96px/1.2 var(--h);text-transform:uppercase;max-width:1350px}
 .four{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;width:100%;margin-top:44px}
 .four div{padding:22px;border-radius:20px;border:1px solid rgba(127,178,255,.4);background:rgba(47,107,255,.2);font:600 24px/1.14 var(--h);text-transform:uppercase;text-align:left}
 .four b{display:block;color:var(--cyan);font-size:18px;margin-bottom:10px}
@@ -239,7 +239,7 @@ h1 span{display:block}
 /* финал */
 .from{font:500 80px/1.14 var(--h);text-transform:uppercase;color:var(--mut);text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:5px}
 .down{font-size:56px;color:var(--cyan);margin:10px 0}
-.to{font:600 130px/1.12 var(--h);text-transform:uppercase}
+.to{font:600 130px/1.22 var(--h);text-transform:uppercase}
 .fin .badge{margin:40px 0 0}
 
 /* ---------- портрет (телефон) ---------- */
@@ -629,3 +629,6 @@ body.pt{--W:900px;--H:1560px}
 @keyframes scan{from{left:0}to{left:100%}}
 .wk{position:absolute;left:0;right:0;bottom:0;display:grid;grid-template-columns:repeat(4,1fr);font:600 12px var(--b);letter-spacing:.14em;color:var(--mut)}
 .ac2:nth-child(4) .tl4>i{display:none}.ac2:nth-child(4) .tl4l{height:6px;top:18px;border-radius:6px;background:linear-gradient(90deg,var(--blue),var(--ice),var(--blue));background-size:200% 100%;box-shadow:0 0 14px rgba(91,140,255,.8);animation:flowbar 2.4s linear infinite}@keyframes flowbar{to{background-position:-200% 0}}
+
+/* сцены вне экрана: бесконечные анимации на паузе */
+.sc.off *,.sc.off *::before,.sc.off *::after{animation-play-state:paused!important}
